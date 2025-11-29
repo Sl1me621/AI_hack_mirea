@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мониторинг активности на депо</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <p class="eyebrow">Дашборд безопасности и активности</p>
+        <h1>Мониторинг активности на депо</h1>
+        <p class="subtitle">Зоны, события и нарушения в реальном времени</p>
+      </div>
+      <button id="refresh-btn">Обновить данные</button>
+    </header>
+
+    <section class="cards" id="metrics-cards">
+      <div class="card accent-safe">
+        <div class="card-title">Людей в безопасной зоне</div>
+        <div class="card-value" id="metric-safe">0</div>
+        <div class="card-hint">Зона SAFE</div>
+      </div>
+      <div class="card accent-medium">
+        <div class="card-title">Людей в зоне средней опасности</div>
+        <div class="card-value" id="metric-medium">0</div>
+        <div class="card-hint">Зона MEDIUM</div>
+      </div>
+      <div class="card accent-danger">
+        <div class="card-title">Людей в опасной зоне</div>
+        <div class="card-value" id="metric-danger">0</div>
+        <div class="card-hint">Зона DANGER</div>
+      </div>
+      <div class="card accent-warning">
+        <div class="card-title">Опасных ситуаций</div>
+        <div class="card-value" id="metric-dangerous-situations">0</div>
+        <div class="card-hint">События DANGEROUS_SITUATION</div>
+      </div>
+      <div class="card accent-cleaning">
+        <div class="card-title">Моют пол</div>
+        <div class="card-value" id="metric-cleaning">0</div>
+        <div class="card-hint">Активность cleaning</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Таймлайн событий</h2>
+        <div id="error-message" class="error"></div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Окно (сек)</th>
+              <th>Безопасная</th>
+              <th>Средняя</th>
+              <th>Опасная</th>
+              <th>Опасных ситуаций</th>
+              <th>Уборка</th>
+              <th>Поезд</th>
+            </tr>
+          </thead>
+          <tbody id="events-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Опасные ситуации</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Окно (сек)</th>
+              <th>Опасных ситуаций</th>
+              <th>Поезд</th>
+            </tr>
+          </thead>
+          <tbody id="dangerous-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Уборка</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Окно (сек)</th>
+              <th>Уборка</th>
+              <th>Поезд</th>
+            </tr>
+          </thead>
+          <tbody id="cleaning-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
