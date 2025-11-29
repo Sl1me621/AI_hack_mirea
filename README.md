@@ -17,6 +17,46 @@ pip install -r requirements.txt
 ```
 
 ### Конфигурация БД
+## Установка и настройка PostgreSQL (Windows)
+
+### 1. Установка PostgreSQL
+
+1. Перейдите на официальный сайт PostgreSQL:  
+   https://www.postgresql.org/download/windows/
+
+2. Скачайте **Windows x86-64 installer** (версия 14/15/16 — любая актуальная).
+
+3. Запустите установщик и оставьте компоненты по умолчанию: 
+
+4. На шаге **Password** задайте пароль для пользователя `postgres`  
+   (это суперпользователь БД).  
+   В этом проекте по умолчанию используется:
+
+   - пользователь: `postgres`  
+   - пароль: `postgres`
+ 
+
+5. Завершите установку. После установки должен запуститься сервис PostgreSQL
+   (обычно `postgresql-x64-xx` в списке служб Windows).
+
+---
+
+### 2. Создание базы данных проекта
+
+Проект ожидает базу данных, например с именем `depot_analytics`.
+
+#### Вариант A: через pgAdmin (GUI)
+
+1. Откройте **pgAdmin** (ставится вместе с PostgreSQL).
+2. В списке слева:
+   - Servers → PostgreSQL → Databases.
+3. ПКМ по **Databases** → **Create → Database…**
+4. В поле **Database** введите, например: `depot_analytics`.
+5. В поле **Owner** оставьте `postgres`.
+6. Нажмите **Save**.
+
+База `depot_analytics` готова.
+ 
 - Переменная окружения: `DATABASE_URL`
 - Дефолт: `postgresql+psycopg2://postgres:postgres@localhost:5432/depot_analytics`
 - Модуль подключения: `backend/db.py` (engine, SessionLocal, Base)
