@@ -137,7 +137,7 @@ def get_zone_for_point(x, y):
     return "none"
 
 
-# ====== ПОЗА (upright / bent) через YOLO Pose ======
+# ====== ПОЗА (uprilght / bent) через YOLO Pose ======
 
 def infer_posture_from_kpts(kpts_xy: np.ndarray) -> str:
     """

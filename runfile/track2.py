@@ -7,6 +7,7 @@ from ultralytics import YOLO
 MODEL_PATH = "weights/yolo11_x/weights/best.pt"   # TODO: путь к твоей модели
 VIDEO_PATH = "C:/Users/User/Desktop/remi2.mp4"         # TODO: путь к твоему видео
 
+
 MAX_MISSED_SECONDS = 4.0      # разрыв для трека (секунд)
 MAX_REASSOC_DIST = 100.0      # макс. расстояние (px) для сопоставления по координатам
 SCENE_DIFF_THRESHOLD = 40.0   # чувствительность перескока сцены
