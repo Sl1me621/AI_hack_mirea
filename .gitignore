@@ -1,0 +1,18 @@
+
+# venv
+.venv/
+#yolo
+yolo/
+#weights
+weights/
+runs/
+#for learning
+data/
+
+
+
+
+
+
+
+
