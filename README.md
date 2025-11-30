@@ -1,10 +1,10 @@
 ## Мониторинг активности и безопасности на депо
 
-Полный прототип: FastAPI + PostgreSQL + SQLAlchemy на backend, статичный HTML/CSS/JS на frontend. Данные хранятся в таблицах `events` и `window_analytics`; фронт работает с агрегированными окнами по 10 секунд.
+Полный прототип: FastAPI + SQLite + SQLAlchemy на backend, статичный HTML/CSS/JS на frontend. Данные хранятся в таблицах `events` и `window_analytics`; фронт работает с агрегированными окнами по 10 секунд.
 
 ### Стек и зависимости
 - Python 3.11
-- FastAPI, SQLAlchemy, Pydantic, psycopg2-binary
+- FastAPI, SQLAlchemy, Pydantic, sqlite (builtin)
 - Uvicorn для запуска сервера
 - OpenCV + EasyOCR (для OCR номера поезда в скрипте)
 - Frontend: чистые HTML/CSS/JS (без сборки)
@@ -58,7 +58,7 @@ pip install -r requirements.txt
 База `depot_analytics` готова.
  
 - Переменная окружения: `DATABASE_URL`
-- Дефолт: `postgresql+psycopg2://postgres:postgres@localhost:5432/depot_analytics`
+- Дефолт: `sqlite:///./depot_analytics.db`
 - Модуль подключения: `backend/db.py` (engine, SessionLocal, Base)
 
 ### Инициализация и тестовые данные
