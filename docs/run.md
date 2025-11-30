@@ -63,7 +63,7 @@ python -m http.server 5500
 4) Запустить CV: `python runfile/log.py` (или `scripts/sample_client.py` для быстрой проверки).  
 5) Подождать минуту, чтобы фоновые flush записали окна в БД (или просто перезапустить API для моментального flush).  
 6) Открыть фронт `http://127.0.0.1:5500` и обновить данные.  
-
+7) веса для моделей лежать на google disk(https://drive.google.com/file/d/1o7w33_CoOzq3pADGRIt8d06bMVk8W_Vy/view?usp=drive_link)
 ## 7. Замечания
 - Все пути и команды рассчитаны на Windows PowerShell; под Unix замените активацию venv и слэши путей.
 - Если нужно использовать другую БД или порт, задайте `DATABASE_URL` перед запуском uvicorn.
