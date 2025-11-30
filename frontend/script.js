@@ -1,4 +1,5 @@
 const BACKEND_URL = "http://127.0.0.1:8000";
+const REFRESH_MS = 3000; // автообновление каждые 3 секунды
 
 const metricSafeEl = document.getElementById("metric-safe");
 const metricMediumEl = document.getElementById("metric-medium");
@@ -11,12 +12,13 @@ const dangerousTableBody = document.getElementById("dangerous-table-body");
 const cleaningTableBody = document.getElementById("cleaning-table-body");
 const refreshBtn = document.getElementById("refresh-btn");
 const errorMessageEl = document.getElementById("error-message");
+let isLoading = false;
 
 async function fetchJson(endpoint) {
   const url = `${BACKEND_URL}${endpoint}`;
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Ошибка ${response.status} при запросе ${endpoint}`);
+    throw new Error(`HTTP ${response.status} при запросе ${endpoint}`);
   }
   return response.json();
 }
@@ -28,8 +30,8 @@ function formatWindowRange(startSec, endSec) {
 }
 
 function formatTrain(present, number) {
-  if (!present) return "Нет";
-  return number ? `Есть (${number})` : "Есть";
+  if (!present) return "нет";
+  return number ? `есть (${number})` : "есть";
 }
 
 function renderMetrics(currentState) {
@@ -84,6 +86,8 @@ function renderCleaning(rows, targetEl) {
 }
 
 async function loadData() {
+  if (isLoading) return;
+  isLoading = true;
   errorMessageEl.textContent = "";
   try {
     const [currentState, windows, dangerous] = await Promise.all([
@@ -100,10 +104,13 @@ async function loadData() {
   } catch (err) {
     console.error(err);
     errorMessageEl.textContent =
-      "Не удалось загрузить данные. Проверьте, что backend запущен и доступен по адресу http://127.0.0.1:8000";
+      "Не удалось получить данные. Убедитесь, что backend работает на http://127.0.0.1:8000";
+  } finally {
+    isLoading = false;
   }
 }
 
 refreshBtn.addEventListener("click", loadData);
 
 loadData();
+setInterval(loadData, REFRESH_MS);
