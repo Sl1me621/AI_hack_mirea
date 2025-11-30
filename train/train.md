@@ -10,9 +10,9 @@
 `noname`, `person_blue`, `person_gray`, `person_orange`, `person_red`, `person_white`, `train`, `background`.
 
 ---
-![YOLO-s](images/confusion_matrix_s.png)
-![YOLO-l](images/confusion_matrix_l.png)
-![YOLO-x](images/confusion_matrix_x.png)
+![YOLO-s](confusion_matrix_s.png)
+![YOLO-l](confusion_matrix_l.png)
+![YOLO-x](confusion_matrix_x.png)
 
 ## Содержимое папки
 
